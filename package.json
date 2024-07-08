@@ -1,0 +1,41 @@
+{
+  "name": "@fireboom/aliyun-nls",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "test": "bun test/test.ts",
+    "build": "bun run scripts/build.ts",
+    "prepublishOnly": "npm run build"
+  },
+  "homepage": "https://github.com/erguotou520/aliyun-nls",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/erguotou520/aliyun-nls.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs"
+    }
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@doremijs/biome-config": "^0.1.4",
+    "@types/bun": "latest",
+    "bun-plugin-dts": "^0.2.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.13",
+    "ws": "^8.18.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
+}
