@@ -1,26 +1,20 @@
 {
   "name": "@fireboom/aliyun-nls",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "type": "module",
   "scripts": {
     "test": "bun test/test.ts",
     "build": "bun run scripts/build.ts",
-    "prepublishOnly": "npm run build"
+    "format": "biome format --write .",
+    "prepublishOnly": "npm run format && npm run build"
   },
   "homepage": "https://github.com/erguotou520/aliyun-nls",
   "repository": {
     "type": "git",
     "url": "https://github.com/erguotou520/aliyun-nls.git"
   },
-  "files": [
-    "dist"
-  ],
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs"
-    }
-  },
+  "files": ["dist"],
+  "types": "dist/index.d.ts",
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
     "@doremijs/biome-config": "^0.1.4",

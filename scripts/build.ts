@@ -1,4 +1,4 @@
-import { rename } from 'node:fs/promises'
+// import { rename } from 'node:fs/promwises'
 import dts from 'bun-plugin-dts'
 
 await Bun.build({
@@ -10,4 +10,4 @@ await Bun.build({
   plugins: [dts()]
 })
 
-await rename('dist/index.js', 'dist/index.mjs')
+// await rename('dist/index.js', 'dist/index.mjs')

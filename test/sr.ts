@@ -20,54 +20,54 @@ audioStream.on('data', (chunk: string) => {
 })
 
 audioStream.on('close', async () => {
-    const sr = new SpeechRecognition({
-      url: URL,
-      appkey: APPKEY,
-      token: TOKEN
-    })
+  const sr = new SpeechRecognition({
+    url: URL,
+    appkey: APPKEY,
+    token: TOKEN
+  })
 
-    sr.on('started', msg => {
-      console.log('Client recv started:', msg)
-    })
+  sr.on('started', msg => {
+    console.log('Client recv started:', msg)
+  })
 
-    sr.on('changed', msg => {
-      console.log('Client recv changed:', msg)
-    })
+  sr.on('changed', msg => {
+    console.log('Client recv changed:', msg)
+  })
 
-    sr.on('completed', msg => {
-      console.log('Client recv completed:', msg)
-    })
+  sr.on('completed', msg => {
+    console.log('Client recv completed:', msg)
+  })
 
-    sr.on('closed', (reason) => {
-      console.log('Client recv closed: + ', reason)
-    })
+  sr.on('closed', (reason) => {
+    console.log('Client recv closed: + ', reason)
+  })
 
-    sr.on('failed', msg => {
-      console.log('Client recv failed:', msg)
-    })
+  sr.on('failed', msg => {
+    console.log('Client recv failed:', msg)
+  })
 
-    try {
-      await sr.start(sr.defaultStartParams(), true, 6000)
-    } catch (error) {
-      console.log('error on start:', error)
-    }
+  try {
+    await sr.start(sr.defaultStartParams(), true, 6000)
+  } catch (error) {
+    console.log('error on start:', error)
+  }
 
-    try {
-      for (const b of b1) {
-        if (!sr.sendAudio(b)) {
-          throw new Error('send audio failed')
-        }
-        await sleep(100)
+  try {
+    for (const b of b1) {
+      if (!sr.sendAudio(b)) {
+        throw new Error('send audio failed')
       }
-    } catch (error) {
-      console.log('sendAudio failed:', error)
+      await sleep(100)
     }
+  } catch (error) {
+    console.log('sendAudio failed:', error)
+  }
 
-    try {
-      console.log('close...')
-      await sr.close()
-    } catch (error) {
-      console.log('error on close:', error)
-    }
-    await sleep(2000)
+  try {
+    console.log('close...')
+    await sr.close()
+  } catch (error) {
+    console.log('error on close:', error)
+  }
+  await sleep(2000)
 })
