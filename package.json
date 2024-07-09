@@ -1,9 +1,9 @@
 {
   "name": "@fireboom/aliyun-nls",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "type": "module",
   "scripts": {
-    "test": "bun test/test.ts",
+    "test": "bun test/token.ts",
     "build": "bun run scripts/build.ts",
     "format": "biome format --write .",
     "prepublishOnly": "npm run format && npm run build"

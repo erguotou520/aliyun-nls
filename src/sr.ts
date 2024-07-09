@@ -1,5 +1,5 @@
+import { EventEmitter } from 'node:events'
 import NlsClient from './nls'
-import { EventEmitter } from 'events'
 
 interface SpeechRecognitionConfig {
   appkey: string
@@ -19,7 +19,7 @@ export class SpeechRecognition {
   private _event: EventEmitter
   private _config: SpeechRecognitionConfig
   private _client: NlsClient | null = null
-  private _taskid: string = ''
+  private _taskid = ''
 
   constructor(config: SpeechRecognitionConfig) {
     this._event = new EventEmitter()
@@ -79,7 +79,7 @@ export class SpeechRecognition {
                 this._event.emit('TaskFailed', str)
                 this._event.emit('failed', str)
               } else {
-                console.log('unknown message: ' + str)
+                console.log(`unknown message: ${str}`)
               }
             }
           },
@@ -149,7 +149,7 @@ export class SpeechRecognition {
     this._client.shutdown()
   }
 
-  sendAudio(data: ArrayBuffer | Buffer): boolean {
+  sendAudio(data: string | ArrayBuffer | Buffer): boolean {
     if (this._client == null) {
       return false
     }

@@ -1,5 +1,5 @@
+import { EventEmitter } from 'node:events'
 import NlsClient from './nls'
-import { EventEmitter } from 'events'
 
 interface SpeechSynthesizerConfig {
   appkey: string
@@ -22,9 +22,9 @@ export class SpeechSynthesizer {
   private _config: SpeechSynthesizerConfig
   private _namespace: string
   private _client: NlsClient | null = null
-  private _taskid: string = ''
+  private _taskid = ''
 
-  constructor(config: SpeechSynthesizerConfig, enable_real_time: boolean = false) {
+  constructor(config: SpeechSynthesizerConfig, enable_real_time = false) {
     this._event = new EventEmitter()
     this._config = config
     this._namespace = enable_real_time ? 'SpeechLongSynthesizer' : 'SpeechSynthesizer'

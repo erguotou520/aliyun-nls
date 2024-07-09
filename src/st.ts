@@ -1,5 +1,5 @@
+import { EventEmitter } from 'node:events'
 import NlsClient from './nls'
-import { EventEmitter } from 'events'
 
 interface SpeechTranscriptionConfig {
   appkey: string
@@ -19,7 +19,7 @@ export class SpeechTranscription {
   private _event: EventEmitter
   private _config: SpeechTranscriptionConfig
   private _client: NlsClient | null = null
-  private _taskid: string = ''
+  private _taskid = ''
 
   constructor(config: SpeechTranscriptionConfig) {
     this._event = new EventEmitter()
@@ -103,7 +103,7 @@ export class SpeechTranscription {
     })
   }
 
-  async close(param: any): Promise<string> {
+  async close(param?: any): Promise<string> {
     if (this._client == null) {
       return new Promise((resolve, reject) => {
         process.nextTick(() => {
@@ -143,7 +143,7 @@ export class SpeechTranscription {
     })
   }
 
-  ctrl(param: any): void {
+  ctrl(param?: any): void {
     if (this._client == null) {
       throw new Error('client is null')
     }
@@ -169,7 +169,7 @@ export class SpeechTranscription {
     this._client.shutdown()
   }
 
-  sendAudio(data: ArrayBuffer): boolean {
+  sendAudio(data: string | ArrayBuffer | Buffer): boolean {
     if (this._client == null) {
       return false
     }

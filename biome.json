@@ -8,6 +8,9 @@
     "rules": {
       "complexity": {
         "noStaticOnlyClass": "off"
+      },
+      "style": {
+        "noParameterAssign": "off"
       }
     }
   }
